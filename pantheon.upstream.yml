@@ -3,6 +3,10 @@ web_docroot: true
 build_step: true
 php_version: 8.3
 database:
-  version: 10.4
-drush_version: 13
+  version: 10.6
+drush_version: 10
 enforce_https: transitional
+protected_web_paths:
+  - /private/
+  - /sites/default/files/private/
+  - /sites/default/files/config/
