@@ -1,0 +1,19 @@
+uuid: 24412570-8cd3-40ba-ac82-c68fd27c73ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_title
+    - node.type.homepage
+id: node.homepage.field_intro_title
+field_name: field_intro_title
+entity_type: node
+bundle: homepage
+label: 'Introduction heading'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

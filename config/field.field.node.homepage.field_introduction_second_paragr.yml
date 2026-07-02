@@ -1,0 +1,19 @@
+uuid: adbcfed1-f0ae-4ef9-bd70-b79d931a6971
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_introduction_second_paragr
+    - node.type.homepage
+id: node.homepage.field_introduction_second_paragr
+field_name: field_introduction_second_paragr
+entity_type: node
+bundle: homepage
+label: 'Introduction second paragraph'
+description: 'Gambling Support BC (GSBC) offers free help for any British Columbia resident having difficulties because of gambling, this includes your own gambling or a loved one’s gambling.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

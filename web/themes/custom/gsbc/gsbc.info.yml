@@ -1,0 +1,9 @@
+name: Gambling Support BC Demo
+type: theme
+description: Native Drupal recreation of the Gambling Support BC homepage.
+base theme: false
+core_version_requirement: ^11
+libraries:
+  - gsbc/global
+regions:
+  content: Content

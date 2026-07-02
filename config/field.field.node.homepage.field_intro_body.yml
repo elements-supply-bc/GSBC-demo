@@ -1,0 +1,19 @@
+uuid: 6f089263-e0ce-420b-8e65-7a45bf7b6722
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_body
+    - node.type.homepage
+id: node.homepage.field_intro_body
+field_name: field_intro_body
+entity_type: node
+bundle: homepage
+label: 'Introduction text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,12 @@
+name: GSBC Demo
+type: module
+description: Creates the editable Homepage content type and demonstration content.
+package: Custom
+core_version_requirement: ^11
+dependencies:
+  - drupal:file
+  - drupal:image
+  - drupal:link
+  - drupal:node
+  - drupal:path
+  - drupal:text

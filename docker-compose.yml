@@ -1,0 +1,32 @@
+services:
+  db:
+    image: mariadb:11.4
+    environment:
+      MARIADB_DATABASE: ${DB_NAME}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - db-data:/var/lib/mysql
+
+  drupal:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    volumes:
+      - drupal-sites:/opt/drupal/web/sites
+      - ./config:/opt/drupal/config
+      - ./web/modules/custom/gsbc_demo:/opt/drupal/web/modules/custom/gsbc_demo:ro
+      - ./web/themes/custom/gsbc:/opt/drupal/web/themes/custom/gsbc:ro
+
+volumes:
+  db-data:
+  drupal-sites:

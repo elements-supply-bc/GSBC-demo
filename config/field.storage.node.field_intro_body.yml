@@ -1,0 +1,19 @@
+uuid: f19d2b5f-1832-40e3-a2fb-30fb6d8de9fd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_intro_body
+field_name: field_intro_body
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

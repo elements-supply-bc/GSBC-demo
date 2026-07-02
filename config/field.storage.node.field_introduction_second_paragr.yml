@@ -1,0 +1,19 @@
+uuid: 23d310c0-0069-47a5-ac55-f6e9ef6de40e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_introduction_second_paragr
+field_name: field_introduction_second_paragr
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

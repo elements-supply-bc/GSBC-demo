@@ -1,0 +1,25 @@
+{% set bc_design = node.field_bc_design.value %}
+<div class="gsbc-home{{ bc_design ? ' gsbc-home--bc' }}">
+  {% include '@gsbc/components/support-header.html.twig' with { bc_design: bc_design, directory: directory } only %}
+  <main id="main-content">
+    {% set hero_image = node.field_hero_image.entity %}
+    {% include '@gsbc/components/hero.html.twig' with {
+      hero_title: node.field_hero_title.value,
+      hero_image_url: hero_image ? file_url(hero_image.uri.value) : null,
+      hero_image_alt: node.field_hero_image.alt,
+      primary_cta_title: node.field_primary_cta.title,
+      primary_cta_url: node.field_primary_cta.0.url,
+      secondary_cta_title: node.field_secondary_cta.title,
+      secondary_cta_url: node.field_secondary_cta.0.url
+    } only %}
+    {% include '@gsbc/components/information.html.twig' with {
+      intro_title: node.field_intro_title.value,
+      intro_body: node.field_intro_body.value,
+      intro_second_paragraph: node.field_introduction_second_paragr.value,
+      help_title: node.field_help_title.value,
+      help_intro: node.field_help_intro.value,
+      help_items: node.field_help_items
+    } only %}
+  </main>
+  {% include '@gsbc/components/footer.html.twig' %}
+</div>

@@ -1,0 +1,9 @@
+.git
+.env
+.ddev
+vendor
+web/core
+web/libraries
+web/modules/contrib
+web/themes/contrib
+web/sites/*/files

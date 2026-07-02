@@ -1,0 +1,12 @@
+<section class="hero" aria-labelledby="hero-title">
+  {% if hero_image_url %}
+    <img class="hero__image" src="{{ hero_image_url }}" alt="{{ hero_image_alt }}">
+  {% endif %}
+  <h1 id="hero-title">{{ hero_title }}</h1>
+</section>
+<nav class="hero-actions" aria-label="Calls to action">
+  <ul class="hero-actions__list">
+    {% if primary_cta_title and primary_cta_url %}<li>{{ link(primary_cta_title, primary_cta_url) }}</li>{% endif %}
+    {% if secondary_cta_title and secondary_cta_url %}<li>{{ link(secondary_cta_title, secondary_cta_url) }}</li>{% endif %}
+  </ul>
+</nav>

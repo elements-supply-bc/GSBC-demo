@@ -1,0 +1,41 @@
+<header class="site-header" role="banner">
+  <div class="support-bar" aria-label="Support options">
+    {% if bc_design %}
+      <a class="bc-logo-banner" href="https://www2.gov.bc.ca/">
+        <img src="{{ directory }}/assets/images/bc-logo-banner.png" alt="Government of British Columbia">
+      </a>
+    {% endif %}
+    <p>Free 24/7 Support
+    <a href="tel:+18887956111">1-888-795-6111</a>
+    <a class="support-bar__online" href="https://gamblingsupportline.ca" target="_blank" rel="noopener noreferrer">
+      Request Support Online<span class="visually-hidden"> (opens in a new window)</span>
+    </a></p>
+  </div>
+
+  <div class="site-nav-shell">
+    <a class="site-logo" href="{{ bc_design ? '/home' : '/' }}" aria-label="Gambling Support BC home">
+      <img src="{{ directory }}/assets/images/gsbc-logo.png" alt="Gambling Support BC">
+    </a>
+
+    <button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
+      <span class="visually-hidden">Toggle navigation</span>
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+
+    <nav id="site-navigation" class="primary-nav" aria-label="Main navigation">
+      <ul class="primary-nav__list">
+        <li><a href="{{ bc_design ? '/home' : '/' }}" aria-current="page">Home</a></li>
+        <li>
+          <details>
+            <summary>About</summary>
+            <ul class="primary-nav__submenu">
+              <li><a href="https://www.gamblingsupportbc.ca/about-us">About Us</a></li>
+              <li><a href="https://www.gamblingsupportbc.ca/contact">Contact Us</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a href="https://www.gamblingsupportbc.ca/resources">Resources for professionals</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

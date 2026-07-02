@@ -1,0 +1,60 @@
+{
+  "name": "gsbc/gsbc-demo",
+  "description": "Gambling Support BC Drupal 11 demo",
+  "type": "project",
+  "license": "proprietary",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  ],
+  "require": {
+    "composer/installers": "^1.9",
+    "drupal/core-composer-scaffold": "^11",
+    "drupal/core-recommended": "^11",
+    "drush/drush": "^13",
+    "pantheon-systems/drupal-integrations": "^11"
+  },
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "extra": {
+    "drupal-scaffold": {
+      "locations": {
+        "web-root": "web/"
+      },
+      "allowed-packages": [
+        "pantheon-systems/drupal-integrations"
+      ],
+      "file-mapping": {
+        "[project-root]/.editorconfig": false,
+        "[project-root]/.gitattributes": false,
+        "[project-root]/pantheon.upstream.yml": false
+      }
+    },
+    "installer-paths": {
+      "web/core": ["type:drupal-core"],
+      "web/libraries/{$name}": ["type:drupal-library"],
+      "web/modules/contrib/{$name}": ["type:drupal-module"],
+      "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+      "web/themes/contrib/{$name}": ["type:drupal-theme"],
+      "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+      "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"]
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "drupal/core-composer-scaffold": true,
+      "symfony/runtime": true
+    },
+    "platform": {
+      "php": "8.3.0"
+    },
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
+}

@@ -1,0 +1,11 @@
+uuid: 0e84935f-74ce-4053-87ad-637e94f7a106
+langcode: en
+status: true
+dependencies: {  }
+name: Homepage
+type: homepage
+description: 'The editable public homepage. Only one should be published.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

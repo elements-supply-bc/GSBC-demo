@@ -1,0 +1,171 @@
+<?php
+
+/**
+ * @file
+ * Installs the editable GSBC demonstration homepage.
+ */
+
+use Drupal\Core\Entity\Entity\EntityFormDisplay;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\link\LinkItemInterface;
+use Drupal\link\LinkTitleVisibility;
+use Drupal\node\Entity\Node;
+use Drupal\node\Entity\NodeType;
+use Drupal\path_alias\Entity\PathAlias;
+
+/**
+ * Implements hook_install().
+ */
+function gsbc_demo_install(): void {
+  $type = NodeType::create([
+    'type' => 'homepage',
+    'name' => 'Homepage',
+    'description' => 'The editable public homepage. Only one should be published.',
+    'display_submitted' => FALSE,
+  ]);
+  $type->save();
+
+  $fields = [
+    'field_hero_title' => ['Hero title', 'string', 1, ['max_length' => 255], []],
+    'field_hero_image' => ['Hero image', 'image', 1, ['target_type' => 'file', 'display_field' => FALSE, 'display_default' => FALSE, 'uri_scheme' => 'public', 'default_image' => ['uuid' => NULL, 'alt' => '', 'title' => '', 'width' => NULL, 'height' => NULL]], ['handler' => 'default:file', 'handler_settings' => [], 'file_directory' => 'hero', 'file_extensions' => 'png jpg jpeg webp', 'alt_field' => TRUE, 'alt_field_required' => TRUE, 'title_field' => FALSE, 'title_field_required' => FALSE, 'max_resolution' => '', 'min_resolution' => '', 'max_filesize' => '', 'default_image' => ['uuid' => NULL, 'alt' => '', 'title' => '', 'width' => NULL, 'height' => NULL]]],
+    'field_primary_cta' => ['Primary call to action', 'link', 1, [], ['title' => LinkTitleVisibility::Required->value, 'link_type' => LinkItemInterface::LINK_GENERIC]],
+    'field_secondary_cta' => ['Secondary call to action', 'link', 1, [], ['title' => LinkTitleVisibility::Required->value, 'link_type' => LinkItemInterface::LINK_GENERIC]],
+    'field_intro_title' => ['Introduction heading', 'string', 1, ['max_length' => 255], []],
+    'field_intro_body' => ['Introduction text', 'string_long', 1, [], []],
+    'field_introduction_second_paragr' => ['Introduction second paragraph', 'string_long', 1, [], []],
+    'field_help_title' => ['Help heading', 'string', 1, ['max_length' => 255], []],
+    'field_help_intro' => ['Help introduction', 'string_long', 1, [], []],
+    'field_help_items' => ['Help items', 'string_long', -1, [], []],
+    'field_bc_design' => ['Use B.C. Design System styling', 'boolean', 1, [], ['on_label' => 'B.C. Design System', 'off_label' => 'Original GSBC']],
+  ];
+
+  foreach ($fields as $name => [$label, $type_name, $cardinality, $storage_settings, $field_settings]) {
+    FieldStorageConfig::create([
+      'field_name' => $name,
+      'entity_type' => 'node',
+      'type' => $type_name,
+      'cardinality' => $cardinality,
+      'settings' => $storage_settings,
+    ])->save();
+
+    FieldConfig::create([
+      'field_name' => $name,
+      'entity_type' => 'node',
+      'bundle' => 'homepage',
+      'label' => $label,
+      'settings' => $field_settings,
+    ])->save();
+  }
+
+  EntityFormDisplay::create([
+    'targetEntityType' => 'node',
+    'bundle' => 'homepage',
+    'mode' => 'default',
+    'status' => TRUE,
+  ])
+    ->setComponent('title', ['type' => 'string_textfield', 'weight' => 0])
+    ->setComponent('field_hero_title', ['type' => 'string_textfield', 'weight' => 1])
+    ->setComponent('field_hero_image', ['type' => 'image_image', 'weight' => 2])
+    ->setComponent('field_primary_cta', ['type' => 'link_default', 'weight' => 3])
+    ->setComponent('field_secondary_cta', ['type' => 'link_default', 'weight' => 4])
+    ->setComponent('field_intro_title', ['type' => 'string_textfield', 'weight' => 5])
+    ->setComponent('field_intro_body', ['type' => 'string_textarea', 'weight' => 6])
+    ->setComponent('field_introduction_second_paragr', ['type' => 'string_textarea', 'weight' => 7])
+    ->setComponent('field_help_title', ['type' => 'string_textfield', 'weight' => 8])
+    ->setComponent('field_help_intro', ['type' => 'string_textarea', 'weight' => 9])
+    ->setComponent('field_help_items', ['type' => 'string_textarea', 'weight' => 10])
+    ->setComponent('field_bc_design', ['type' => 'boolean_checkbox', 'weight' => 11])
+    ->save();
+
+  $home = Node::create([
+    'type' => 'homepage',
+    'title' => 'Home',
+    'status' => 1,
+    'uid' => 1,
+    'field_hero_title' => 'Game. Life. Balance.',
+    'field_primary_cta' => ['uri' => 'https://www.gamblingsupportbc.ca/support/self-assessment', 'title' => 'Self-Assessment'],
+    'field_secondary_cta' => ['uri' => 'https://www.gamblingsupportbc.ca/resources', 'title' => 'Learn More'],
+    'field_intro_title' => 'Who We Are',
+    'field_intro_body' => 'Are you or someone you love struggling with gambling?',
+    'field_introduction_second_paragr' => 'Gambling Support BC (GSBC) offers free help for any British Columbia resident having difficulties because of gambling, this includes your own gambling or a loved one’s gambling.',
+    'field_help_title' => 'How We Can Help',
+    'field_help_intro' => 'Services we offer:',
+    'field_help_items' => [
+      ['value' => '24/7 helpline 1-888-795-6111'],
+      ['value' => 'Callers to the helpline will be instantly connected to a navigator who can provide immediate assistance, help you find services in your community, or connect you to a free counsellor'],
+      ['value' => 'All our support services are available free of charge to BC residents. GSBC counselling services are short-term treatment interventions provided by qualified professionals with extensive experience'],
+      ['value' => 'All service providers are trained in culturally relevant and trauma informed treatment methods to support Indigenous peoples'],
+    ],
+  ]);
+  $home->save();
+
+  $bc_home = $home->createDuplicate();
+  $bc_home
+    ->setTitle('Home — B.C. design')
+    ->set('field_bc_design', TRUE)
+    ->save();
+  PathAlias::create([
+    'path' => '/node/' . $bc_home->id(),
+    'alias' => '/home',
+    'langcode' => 'en',
+  ])->save();
+
+  \Drupal::configFactory()
+    ->getEditable('system.site')
+    ->set('page.front', '/node/' . $home->id())
+    ->save();
+}
+
+/**
+ * Adds the B.C. design variant and an editable /home copy.
+ */
+function gsbc_demo_update_11001(): void {
+  if (!FieldStorageConfig::loadByName('node', 'field_bc_design')) {
+    FieldStorageConfig::create([
+      'field_name' => 'field_bc_design',
+      'entity_type' => 'node',
+      'type' => 'boolean',
+      'cardinality' => 1,
+    ])->save();
+  }
+
+  if (!FieldConfig::loadByName('node', 'homepage', 'field_bc_design')) {
+    FieldConfig::create([
+      'field_name' => 'field_bc_design',
+      'entity_type' => 'node',
+      'bundle' => 'homepage',
+      'label' => 'Use B.C. Design System styling',
+      'settings' => [
+        'on_label' => 'B.C. Design System',
+        'off_label' => 'Original GSBC',
+      ],
+    ])->save();
+  }
+
+  $form_display = EntityFormDisplay::load('node.homepage.default');
+  if ($form_display) {
+    $form_display
+      ->setComponent('field_bc_design', ['type' => 'boolean_checkbox', 'weight' => 11])
+      ->save();
+  }
+
+  if (!\Drupal::entityTypeManager()->getStorage('path_alias')->loadByProperties(['alias' => '/home'])) {
+    $front_path = \Drupal::config('system.site')->get('page.front');
+    $front_id = str_starts_with($front_path, '/node/') ? substr($front_path, 6) : NULL;
+    $source = $front_id ? Node::load($front_id) : NULL;
+
+    if ($source?->bundle() === 'homepage') {
+      $bc_home = $source->createDuplicate();
+      $bc_home
+        ->setTitle('Home — B.C. design')
+        ->set('field_bc_design', TRUE)
+        ->save();
+      PathAlias::create([
+        'path' => '/node/' . $bc_home->id(),
+        'alias' => '/home',
+        'langcode' => $bc_home->language()->getId(),
+      ])->save();
+    }
+  }
+}

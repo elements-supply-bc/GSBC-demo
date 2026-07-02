@@ -1,0 +1,25 @@
+<article class="information">
+  <div class="information__grid">
+  <section aria-labelledby="who-we-are-title">
+    <h2 id="who-we-are-title">{{ intro_title }}</h2>
+    <p>{{ intro_body }}</p>
+    {% if intro_second_paragraph %}
+      <p>{{ intro_second_paragraph }}</p>
+    {% endif %}
+  </section>
+
+  <section aria-labelledby="how-we-can-help-title">
+    <h2 id="how-we-can-help-title">{{ help_title }}</h2>
+    <p>{{ help_intro }}</p>
+    <ul>
+      {% for item in help_items %}
+        {% if loop.first %}
+          <li><strong>{{ item.value }}</strong></li>
+        {% else %}
+          <li>{{ item.value }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+  </div>
+</article>

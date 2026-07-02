@@ -1,0 +1,19 @@
+uuid: 73121084-e620-42b7-91c0-acd57c8d8d2a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_help_title
+    - node.type.homepage
+id: node.homepage.field_help_title
+field_name: field_help_title
+entity_type: node
+bundle: homepage
+label: 'Help heading'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

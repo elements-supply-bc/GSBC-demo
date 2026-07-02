@@ -1,0 +1,22 @@
+uuid: 939e0eec-5c19-4341-86e4-41fec84dc1b9
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - gsbc
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: gsbc_content
+theme: gsbc
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

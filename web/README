@@ -1,0 +1,13 @@
+现有的两个homepage
+
+Both are separate nodes using the same Homepage content type:
+Node 1: /, field_bc_design is off.
+Node 2: /home, field_bc_design is on.
+The content type is the shared blueprint; the nodes are two independent records created from it. Changing fields at /admin/structure/types/manage/homepage/fields affects both.
+They differ through more than style.css:
+[node--homepage.html.twig (line 1)](/Users/billyli/github/GSBC-demo/web/themes/custom/gsbc/templates/node--homepage.html.twig:1) reads field_bc_design.
+It adds the gsbc-home--bc CSS class.
+[support-header.html.twig (line 3)](/Users/billyli/github/GSBC-demo/web/themes/custom/gsbc/templates/components/support-header.html.twig:3) conditionally adds the B.C. logo.
+style.css styles .gsbc-home--bc.
+Drupal configuration makes node 1 the front page while node 2 has the /home alias.
+This is reasonable for a demo comparing two designs. For production, two homepage nodes can cause duplicated or inconsistent content. Better practice would usually be one homepage node, a dedicated B.C. view mode/template, and a separate CSS library attached by Twig. Drupal field/type configuration should also eventually be exported to YAML with:

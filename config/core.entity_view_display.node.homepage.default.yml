@@ -1,0 +1,47 @@
+uuid: 139ff7c8-83fd-45ac-abf5-611d5c25dc57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.homepage.field_bc_design
+    - field.field.node.homepage.field_help_intro
+    - field.field.node.homepage.field_help_items
+    - field.field.node.homepage.field_help_title
+    - field.field.node.homepage.field_hero_image
+    - field.field.node.homepage.field_hero_title
+    - field.field.node.homepage.field_intro_body
+    - field.field.node.homepage.field_intro_title
+    - field.field.node.homepage.field_introduction_second_paragr
+    - field.field.node.homepage.field_primary_cta
+    - field.field.node.homepage.field_secondary_cta
+    - node.type.homepage
+  module:
+    - user
+id: node.homepage.default
+targetEntityType: node
+bundle: homepage
+mode: default
+content:
+  field_introduction_second_paragr:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_bc_design: true
+  field_help_intro: true
+  field_help_items: true
+  field_help_title: true
+  field_hero_image: true
+  field_hero_title: true
+  field_intro_body: true
+  field_intro_title: true
+  field_primary_cta: true
+  field_secondary_cta: true
