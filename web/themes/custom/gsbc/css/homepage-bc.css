@@ -211,6 +211,10 @@
     padding: 8px 16px;
   }
 
+  .gsbc-home--bc .bc-logo-banner {
+    align-self: flex-start;
+  }
+
   .gsbc-home--bc .support-bar__online {
     margin-left: 8px;
   }
@@ -229,7 +233,7 @@
   }
 
   .gsbc-home--bc .hero-actions {
-    margin-top: -56px;
+    margin-top: 24px;
   }
 
   .gsbc-home--bc .hero-actions__list {
