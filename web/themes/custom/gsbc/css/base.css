@@ -1,0 +1,100 @@
+@font-face {
+  font-family: "Cera Pro Regular";
+  src: url("../assets/fonts/Cera_Pro_Regular.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Museo Slab 700";
+  src: url("../assets/fonts/Museo_Slab_700.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BC Sans";
+  src: url("../assets/fonts/BCSans-Regular.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "BC Sans";
+  src: url("../assets/fonts/BCSans-Bold.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
+:root {
+  --gsbc-teal: #3594ac;
+  --gsbc-teal-hover: #3ca8c3;
+  --gsbc-purple: #8a67ac;
+  --gsbc-text: #333;
+  --gsbc-nav-text: #777;
+  --gsbc-border: #ddd;
+  --gsbc-white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--gsbc-text);
+  background: var(--gsbc-purple);
+  font-family: "Cera Pro Regular", Arial, sans-serif;
+  line-height: 1.43;
+}
+
+a {
+  color: var(--gsbc-teal);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--gsbc-teal-hover);
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible {
+  outline: 3px solid #fcba19;
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1100;
+  padding: 8px 12px;
+  color: #fff;
+  background: #013366;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  color: #fff;
+  transform: translateY(0);
+}
+

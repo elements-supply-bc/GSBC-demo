@@ -1,4 +1,8 @@
 {% set bc_design = node.field_bc_design.value %}
+{{ attach_library('gsbc/homepage') }}
+{% if bc_design %}
+  {{ attach_library('gsbc/homepage-bc') }}
+{% endif %}
 <div class="gsbc-home{{ bc_design ? ' gsbc-home--bc' }}">
   {% include '@gsbc/components/support-header.html.twig' with { bc_design: bc_design, directory: directory } only %}
   <main id="main-content">

@@ -1,9 +1,22 @@
 global:
   css:
     theme:
-      css/style.css: {}
+      css/base.css: {}
+
+homepage:
+  css:
+    theme:
+      css/homepage.css: {}
   js:
     js/navigation.js: {}
   dependencies:
     - core/drupal
     - core/once
+    - gsbc/global
+
+homepage-bc:
+  css:
+    theme:
+      css/homepage-bc.css: {}
+  dependencies:
+    - gsbc/homepage

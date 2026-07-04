@@ -1,0 +1,251 @@
+/* B.C. Design System 5.0.0 variant for the admin-selectable homepage. */
+.gsbc-home--bc {
+  --bc-surface-primary: #013366;
+  --bc-surface-primary-hover: #1e5189;
+  --bc-theme-gold: #fcba19;
+  --bc-text: #2d2d2d;
+  --bc-background: #faf9f8;
+  --bc-background-blue: #f1f8fe;
+  padding-top: 0;
+  color: var(--bc-text);
+  background: var(--bc-background);
+  font-family: "BC Sans", "Noto Sans", Verdana, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.gsbc-home--bc .site-header {
+  position: sticky;
+  top: 0;
+  min-height: 0;
+  background: #fff;
+  border-bottom: 4px solid var(--bc-theme-gold);
+}
+
+.gsbc-home--bc .support-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 72px;
+  padding: 12px 32px;
+  background: var(--bc-surface-primary);
+}
+
+.gsbc-home--bc .bc-logo-banner {
+  flex: 0 0 auto;
+}
+
+.gsbc-home--bc .bc-logo-banner img {
+  display: block;
+  width: 155px;
+  height: 41px;
+}
+
+.gsbc-home--bc .support-bar__online {
+  margin: 4px 0 4px 16px;
+  padding: 8px 16px;
+  border-width: 2px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.gsbc-home--bc .support-bar__online:hover,
+.gsbc-home--bc .support-bar__online:focus-visible {
+  background: var(--bc-surface-primary-hover);
+}
+
+.gsbc-home--bc .site-nav-shell {
+  width: min(100%, 1200px);
+  min-height: 80px;
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+.gsbc-home--bc .primary-nav a,
+.gsbc-home--bc .primary-nav summary {
+  color: var(--bc-text);
+  font-weight: 700;
+}
+
+.gsbc-home--bc .primary-nav a[aria-current="page"] {
+  color: var(--bc-surface-primary);
+  background: var(--bc-background-blue);
+  box-shadow: inset 0 -4px var(--bc-surface-primary);
+}
+
+.gsbc-home--bc .primary-nav a:hover,
+.gsbc-home--bc .primary-nav summary:hover {
+  color: var(--bc-surface-primary);
+  background: #edebe9;
+}
+
+.gsbc-home--bc .hero {
+  height: 320px;
+  background-color: var(--bc-surface-primary);
+}
+
+.gsbc-home--bc .hero::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(270deg, rgba(1, 51, 102, 0.9), rgba(1, 51, 102, 0.08));
+  content: "";
+}
+
+.gsbc-home--bc .hero h1 {
+  bottom: 64px;
+  left: max(24px, calc((100% - 1152px) / 2));
+  max-width: min(720px, calc(100% - 48px));
+  color: #fff;
+  font-family: "BC Sans", "Noto Sans", Verdana, Arial, sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+  transform: none;
+}
+
+.gsbc-home--bc .hero-actions {
+  width: min(calc(100% - 48px), 1152px);
+  margin: -28px auto 0;
+  text-align: left;
+}
+
+.gsbc-home--bc .hero-actions__list {
+  display: flex;
+  gap: 16px;
+}
+
+.gsbc-home--bc .hero-actions__list li {
+  min-width: 0;
+  margin: 0;
+}
+
+.gsbc-home--bc .hero-actions__list a {
+  min-height: 48px;
+  padding: 12px 24px;
+  background: var(--bc-surface-primary);
+  border: 2px solid var(--bc-surface-primary);
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.gsbc-home--bc .hero-actions__list li:nth-child(2) a {
+  color: var(--bc-surface-primary);
+  background: #fff;
+}
+
+.gsbc-home--bc .hero-actions__list a:hover,
+.gsbc-home--bc .hero-actions__list a:focus-visible {
+  color: #fff;
+  background: var(--bc-surface-primary-hover);
+  border-color: var(--bc-surface-primary-hover);
+}
+
+.gsbc-home--bc .information {
+  max-width: 1200px;
+  padding: 40px 24px 32px;
+}
+
+.gsbc-home--bc .information__grid {
+  gap: 32px;
+}
+
+.gsbc-home--bc .information__grid > section {
+  padding: 24px;
+  background: #fff;
+  border-top: 4px solid var(--bc-theme-gold);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(45, 45, 45, 0.14);
+}
+
+.gsbc-home--bc .information h2 {
+  margin: 0 0 16px;
+  padding: 0;
+  color: var(--bc-text);
+  font-family: "BC Sans", "Noto Sans", Verdana, Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.gsbc-home--bc .information p {
+  margin-bottom: 16px;
+}
+
+.gsbc-home--bc .information li {
+  margin: 0 0 16px 24px;
+  padding: 0;
+}
+
+.gsbc-home--bc .information li::before {
+  top: 0;
+  left: -24px;
+  color: var(--bc-surface-primary);
+  content: "•";
+}
+
+.gsbc-home--bc .site-footer {
+  min-height: 132px;
+  background: var(--bc-surface-primary);
+  border-top: 4px solid var(--bc-theme-gold);
+}
+
+.gsbc-home--bc .footer-search button {
+  background: var(--bc-surface-primary-hover);
+  border-color: #fff;
+}
+
+@media (max-width: 767px) {
+  .gsbc-home--bc {
+    padding-top: 0;
+  }
+
+  .gsbc-home--bc .site-header {
+    min-height: 0;
+  }
+
+  .gsbc-home--bc .support-bar {
+    flex-direction: column;
+    gap: 0;
+    min-height: 108px;
+    padding: 8px 16px;
+  }
+
+  .gsbc-home--bc .support-bar__online {
+    margin-left: 8px;
+  }
+
+  .gsbc-home--bc .site-nav-shell {
+    padding-inline: 0;
+  }
+
+  .gsbc-home--bc .hero {
+    height: 300px;
+  }
+
+  .gsbc-home--bc .hero h1 {
+    bottom: 80px;
+    font-size: 2rem;
+  }
+
+  .gsbc-home--bc .hero-actions {
+    margin-top: -56px;
+  }
+
+  .gsbc-home--bc .hero-actions__list {
+    display: grid;
+    gap: 8px;
+  }
+
+  .gsbc-home--bc .information {
+    padding-top: 40px;
+  }
+
+  .gsbc-home--bc .information__grid > section {
+    padding: 24px;
+  }
+
+  .gsbc-home--bc .information h2 {
+    font-size: 1.75rem;
+  }
+}
