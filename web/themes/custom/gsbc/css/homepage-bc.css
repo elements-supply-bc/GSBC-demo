@@ -87,17 +87,22 @@
 .gsbc-home--bc .hero::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(270deg, rgba(1, 51, 102, 0.9), rgba(1, 51, 102, 0.08));
+  background: linear-gradient(
+    90deg,
+    rgba(1, 51, 102, 0.9) 0%,
+    rgba(1, 51, 102, 0.72) 45%,
+    rgba(255, 255, 255, 0) 100%
+  );
   content: "";
 }
 
 .gsbc-home--bc .hero h1 {
-  bottom: 64px;
+  /* bottom: 64px; */
   left: max(24px, calc((100% - 1152px) / 2));
   max-width: min(720px, calc(100% - 48px));
   color: #fff;
   font-family: "BC Sans", "Noto Sans", Verdana, Arial, sans-serif;
-  font-size: 2.25rem;
+  font-size: 3.25rem;
   font-weight: 700;
   line-height: 1.5;
   text-align: left;
@@ -107,11 +112,12 @@
 .gsbc-home--bc .hero-actions {
   width: min(calc(100% - 48px), 1152px);
   margin: -28px auto 0;
-  text-align: left;
+  text-align: center;
 }
 
 .gsbc-home--bc .hero-actions__list {
   display: flex;
+  justify-content: flex-end;
   gap: 16px;
 }
 
@@ -156,6 +162,17 @@
   border-top: 4px solid var(--bc-theme-gold);
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(45, 45, 45, 0.14);
+}
+
+.gsbc-home--bc .information__accessibility {
+  padding: 24px;
+  margin-top: 32px;
+  background: var(--bc-background-blue);
+  border-left: 4px solid var(--bc-surface-primary);
+}
+
+.gsbc-home--bc .information__accessibility p:last-child {
+  margin-bottom: 0;
 }
 
 .gsbc-home--bc .information h2 {
@@ -220,15 +237,42 @@
   }
 
   .gsbc-home--bc .site-nav-shell {
+    height: 104px;
+    min-height: 104px;
     padding-inline: 0;
   }
 
+  .gsbc-home--bc .site-logo {
+    width: 144px;
+    height: 96px;
+    padding: 8px 12px;
+    margin-block: 4px;
+  }
+
+  .gsbc-home--bc .site-logo img {
+    width: 120px;
+    height: auto;
+  }
+
+  .gsbc-home--bc .nav-toggle {
+    top: 30px;
+    height: 44px;
+  }
+
   .gsbc-home--bc .hero {
-    height: 300px;
+    height: 200px;
+  }
+
+  .gsbc-home--bc .hero::after {
+    background: linear-gradient(
+      90deg,
+      rgba(1, 51, 102, 0.9),
+      rgba(1, 51, 102, 0.6)
+    );
   }
 
   .gsbc-home--bc .hero h1 {
-    bottom: 80px;
+    bottom: 40px;
     font-size: 2rem;
   }
 
@@ -238,6 +282,7 @@
 
   .gsbc-home--bc .hero-actions__list {
     display: grid;
+    justify-content: stretch;
     gap: 8px;
   }
 

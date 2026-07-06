@@ -1,0 +1,19 @@
+uuid: 8a57e59e-9cd3-43b1-9b5d-2fa212e889ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_accessibility_title
+    - node.type.homepage
+id: node.homepage.field_accessibility_title
+field_name: field_accessibility_title
+entity_type: node
+bundle: homepage
+label: 'Accessibility heading'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

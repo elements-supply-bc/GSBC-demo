@@ -82,19 +82,20 @@ input:focus-visible {
   border: 0;
 }
 
-.skip-link {
-  position: fixed;
+.visually-hidden.focusable[href="#main-content"]:focus {
+  position: fixed !important;
   top: 8px;
   left: 8px;
   z-index: 1100;
+  width: auto;
+  height: auto;
   padding: 8px 12px;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   color: #fff;
   background: #013366;
-  transform: translateY(-150%);
+  outline: 3px solid #fcba19;
+  outline-offset: 2px;
+  white-space: normal;
 }
-
-.skip-link:focus {
-  color: #fff;
-  transform: translateY(0);
-}
-

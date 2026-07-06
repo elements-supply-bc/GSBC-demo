@@ -163,7 +163,18 @@ Do not import a local database over an active environment without a reviewed mig
 
 ## Quality and accessibility
 
-The demonstration applies B.C. digital theme colours, BC Sans, semantic Twig templates, keyboard focus indicators, responsive reflow and reduced-motion handling. Representative routes should still be tested before each release at narrow and wide widths, 200% zoom, keyboard-only operation and with assistive technology.
+The demonstration is designed toward WCAG 2.2 Level AA and the B.C. Accessibility and Inclusion Toolkit. The implementation supports accessibility in the following ways:
+
+- Semantic Twig templates provide one page heading, ordered section headings and recognizable header, navigation, main-content and footer regions.
+- A keyboard-focusable skip link moves users to `#main-content`. Native links, buttons and disclosure elements retain their expected keyboard behaviour, and visible focus styles do not depend on colour alone.
+- The Drupal hero-image field requires alternative text. Fixed brand images also have concise accessible names.
+- The B.C. hero uses a dark overlay behind its large white heading. The current image measures approximately 7.8:1 on desktop and 5.7:1 on mobile, above the 3:1 minimum for large text. Primary and secondary button text measures approximately 12.6:1 against its background.
+- Desktop calls to action sit over the light side of the hero treatment. On mobile they move below the image, stack at full width and retain a 52-pixel activation height.
+- The mobile hero is reduced to 200 pixels high so more of the wide source image remains visible without distortion. The heading remains real text and uses a stronger mobile overlay to preserve contrast across the crop.
+- Responsive layouts reflow without horizontal page scrolling at a 320-pixel viewport. Reduced-motion preferences disable smooth scrolling.
+- Accessibility content is stored in structured Drupal fields so editors can update it without changing templates.
+
+These choices support accessibility but do not establish full WCAG conformance. Before each release, test representative routes at narrow and wide widths, at 200% and 400% zoom, with keyboard-only navigation and with a supported screen-reader/browser combination. Include people who use assistive technology in usability testing before a public launch.
 
 Production readiness also requires:
 

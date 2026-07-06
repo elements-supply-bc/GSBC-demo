@@ -22,4 +22,11 @@
     </ul>
   </section>
   </div>
+
+  {% if accessibility_title and accessibility_body %}
+    <section class="information__accessibility" aria-labelledby="accessibility-title">
+      <h2 id="accessibility-title">{{ accessibility_title }}</h2>
+      <p>{{ accessibility_body }}</p>
+    </section>
+  {% endif %}
 </article>

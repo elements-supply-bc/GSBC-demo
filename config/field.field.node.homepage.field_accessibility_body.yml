@@ -1,0 +1,19 @@
+uuid: d8122775-bd20-471d-b935-cf7282a3b8a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_accessibility_body
+    - node.type.homepage
+id: node.homepage.field_accessibility_body
+field_name: field_accessibility_body
+entity_type: node
+bundle: homepage
+label: 'Accessibility text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

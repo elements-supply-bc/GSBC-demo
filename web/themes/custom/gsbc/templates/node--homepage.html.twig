@@ -1,4 +1,6 @@
 {% set bc_design = node.field_bc_design.value %}
+{% set accessibility_title = node.hasField('field_accessibility_title') ? node.field_accessibility_title.value : null %}
+{% set accessibility_body = node.hasField('field_accessibility_body') ? node.field_accessibility_body.value : null %}
 {{ attach_library('gsbc/homepage') }}
 {% if bc_design %}
   {{ attach_library('gsbc/homepage-bc') }}
@@ -22,7 +24,9 @@
       intro_second_paragraph: node.field_introduction_second_paragr.value,
       help_title: node.field_help_title.value,
       help_intro: node.field_help_intro.value,
-      help_items: node.field_help_items
+      help_items: node.field_help_items,
+      accessibility_title: accessibility_title,
+      accessibility_body: accessibility_body
     } only %}
   </main>
   {% include '@gsbc/components/footer.html.twig' %}

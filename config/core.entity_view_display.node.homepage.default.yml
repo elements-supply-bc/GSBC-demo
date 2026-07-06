@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.homepage.field_accessibility_body
+    - field.field.node.homepage.field_accessibility_title
     - field.field.node.homepage.field_bc_design
     - field.field.node.homepage.field_help_intro
     - field.field.node.homepage.field_help_items
@@ -35,6 +37,8 @@ content:
     weight: 100
     region: content
 hidden:
+  field_accessibility_body: true
+  field_accessibility_title: true
   field_bc_design: true
   field_help_intro: true
   field_help_items: true

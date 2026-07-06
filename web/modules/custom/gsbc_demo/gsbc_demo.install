@@ -37,6 +37,8 @@ function gsbc_demo_install(): void {
     'field_help_title' => ['Help heading', 'string', 1, ['max_length' => 255], []],
     'field_help_intro' => ['Help introduction', 'string_long', 1, [], []],
     'field_help_items' => ['Help items', 'string_long', -1, [], []],
+    'field_accessibility_title' => ['Accessibility heading', 'string', 1, ['max_length' => 255], []],
+    'field_accessibility_body' => ['Accessibility text', 'string_long', 1, [], []],
     'field_bc_design' => ['Use B.C. Design System styling', 'boolean', 1, [], ['on_label' => 'B.C. Design System', 'off_label' => 'Original GSBC']],
   ];
 
@@ -75,7 +77,9 @@ function gsbc_demo_install(): void {
     ->setComponent('field_help_title', ['type' => 'string_textfield', 'weight' => 8])
     ->setComponent('field_help_intro', ['type' => 'string_textarea', 'weight' => 9])
     ->setComponent('field_help_items', ['type' => 'string_textarea', 'weight' => 10])
-    ->setComponent('field_bc_design', ['type' => 'boolean_checkbox', 'weight' => 11])
+    ->setComponent('field_accessibility_title', ['type' => 'string_textfield', 'weight' => 11])
+    ->setComponent('field_accessibility_body', ['type' => 'string_textarea', 'weight' => 12])
+    ->setComponent('field_bc_design', ['type' => 'boolean_checkbox', 'weight' => 13])
     ->save();
 
   $home = Node::create([
@@ -104,6 +108,8 @@ function gsbc_demo_install(): void {
   $bc_home
     ->setTitle('Home — B.C. design')
     ->set('field_bc_design', TRUE)
+    ->set('field_accessibility_title', 'Accessibility in this demo')
+    ->set('field_accessibility_body', 'The demo includes clear headings and page regions, keyboard navigation, visible focus, image descriptions and a layout that adapts to zoom and small screens. A full WCAG 2.2 Level AA review is still needed before launch.')
     ->save();
   PathAlias::create([
     'path' => '/node/' . $bc_home->id(),
@@ -166,6 +172,75 @@ function gsbc_demo_update_11001(): void {
         'alias' => '/home',
         'langcode' => $bc_home->language()->getId(),
       ])->save();
+    }
+  }
+}
+
+/**
+ * Adds editable accessibility content to the B.C. design homepage.
+ */
+function gsbc_demo_update_11002(): void {
+  $fields = [
+    'field_accessibility_title' => [
+      'Accessibility heading',
+      'string',
+      ['max_length' => 255],
+      '36606a84-cdb7-45e4-86db-3d90986a4b2e',
+      '8a57e59e-9cd3-43b1-9b5d-2fa212e889ff',
+    ],
+    'field_accessibility_body' => [
+      'Accessibility text',
+      'string_long',
+      [],
+      'ec750543-0e7f-4f2c-8822-badfb5e05ed7',
+      'd8122775-bd20-471d-b935-cf7282a3b8a3',
+    ],
+  ];
+
+  foreach ($fields as $name => [$label, $type, $storage_settings, $storage_uuid, $field_uuid]) {
+    if (!FieldStorageConfig::loadByName('node', $name)) {
+      FieldStorageConfig::create([
+        'uuid' => $storage_uuid,
+        'field_name' => $name,
+        'entity_type' => 'node',
+        'type' => $type,
+        'cardinality' => 1,
+        'settings' => $storage_settings,
+      ])->save();
+    }
+
+    if (!FieldConfig::loadByName('node', 'homepage', $name)) {
+      FieldConfig::create([
+        'uuid' => $field_uuid,
+        'field_name' => $name,
+        'entity_type' => 'node',
+        'bundle' => 'homepage',
+        'label' => $label,
+      ])->save();
+    }
+  }
+
+  $form_display = EntityFormDisplay::load('node.homepage.default');
+  if ($form_display) {
+    $form_display
+      ->setComponent('field_accessibility_title', ['type' => 'string_textfield', 'weight' => 11])
+      ->setComponent('field_accessibility_body', ['type' => 'string_textarea', 'weight' => 12])
+      ->setComponent('field_bc_design', ['type' => 'boolean_checkbox', 'weight' => 13])
+      ->save();
+  }
+
+  $pages = Node::loadMultiple(\Drupal::entityQuery('node')
+    ->accessCheck(FALSE)
+    ->condition('type', 'homepage')
+    ->condition('field_bc_design', TRUE)
+    ->execute());
+
+  foreach ($pages as $page) {
+    if ($page->get('field_accessibility_title')->isEmpty()) {
+      $page
+        ->set('field_accessibility_title', 'Accessibility in this demo')
+        ->set('field_accessibility_body', 'The demo includes clear headings and page regions, keyboard navigation, visible focus, image descriptions and a layout that adapts to zoom and small screens. A full WCAG 2.2 Level AA review is still needed before launch.')
+        ->save();
     }
   }
 }
